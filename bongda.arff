@@ -1,0 +1,23 @@
+@relation bongda
+
+@attribute '﻿so tran thang 1' numeric
+@attribute 'so tran thua 1' numeric
+@attribute 'so tran hoa 1' numeric
+@attribute 'ban thang 1' numeric
+@attribute 'ban thua 1' numeric
+@attribute 'so tran thang 2' numeric
+@attribute 'so tran thua 2' numeric
+@attribute 'so tran hoa 2' numeric
+@attribute 'ban thang 2' numeric
+@attribute 'ban thua 2' numeric
+@attribute Nhan {Thang,Hoa,Thua}
+
+@data
+0,0,0,0,0,0,0,0,0,0,Thang
+0,0,0,0,0,0,0,0,0,0,Thang
+1,0,0,3,0,1,0,0,2,1,Hoa
+0,1,0,0,3,0,1,0,1,2,Thang
+1,0,1,5,2,0,2,0,1,4,Thang
+1,1,0,2,3,1,0,1,4,2,Thua
+1,2,0,4,6,2,0,1,6,2,Hoa
+0,3,0,1,5,2,0,1,7,4,Thua

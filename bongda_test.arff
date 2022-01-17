@@ -1,0 +1,16 @@
+@relation bongda_test
+
+@attribute '﻿so tran thang 1' numeric
+@attribute 'so tran thua 1' numeric
+@attribute 'so tran hoa 1' numeric
+@attribute 'ban thang 1' numeric
+@attribute 'ban thua 1' numeric
+@attribute 'so tran thang 2' numeric
+@attribute 'so tran thua 2' numeric
+@attribute 'so tran hoa 2' numeric
+@attribute 'ban thang 2' numeric
+@attribute 'ban thua 2' numeric
+
+@data
+1,2,1,4,6,1,0,1,2,4
+0,2,0,1,5,2,0,2,6,2

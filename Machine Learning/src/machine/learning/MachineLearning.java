@@ -21,9 +21,13 @@ public class MachineLearning {
 //        MyKnowledgeModel model1 = new MyKnowledgeModel("C:\\Users\\Long Thuy\\Downloads\\iris.arff");
 //        System.out.println(model1);
 
+
+//          đổi CSV sang arff
 //        MyKnowledgeModel model = new MyKnowledgeModel();
 //        model.CSV2Arff("C:\\Users\\Long Thuy\\Documents\\bongda_test.csv", "C:\\Users\\Long Thuy\\Documents\\bongda_test.arff");
-//        
+
+
+
 //        MyKnowledgeModel model = new MyKnowledgeModel("C:\\Users\\Long Thuy\\Downloads\\labor.arff");
 //        model.saveData2CSV("C:\\Users\\Long Thuy\\Downloads\\labor.csv");
     
