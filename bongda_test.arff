@@ -10,7 +10,10 @@
 @attribute 'so tran hoa 2' numeric
 @attribute 'ban thang 2' numeric
 @attribute 'ban thua 2' numeric
+@attribute Nhan {Hoa,Thang,Thua}
 
 @data
-1,2,1,4,6,1,0,1,2,4
-0,2,0,1,5,2,0,2,6,2
+1,2,0,4,6,2,0,1,6,2,Hoa
+1,0,0,3,0,1,0,0,2,1,Hoa
+1,2,1,4,6,3,0,1,12,4,Thang
+0,4,0,1,10,2,0,2,6,2,Thua

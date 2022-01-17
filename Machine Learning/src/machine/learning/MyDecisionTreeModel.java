@@ -23,24 +23,26 @@ public class MyDecisionTreeModel extends MyKnowledgeModel{
         super(filename, m_otps, d_opts);
     }
     
-//    public MyDecisionTreeModel(String filename1, String filename2, String m_otps, String d_opts ) throws Exception {
-//        this.source1 = new DataSource(filename1);     //lưu data đọc từ file 
-//        this.trainset = source1.getDataSet();     //đọc dataset vào bộ nhớ và lưu vào biến
-//        this.source2 = new DataSource(filename2);     //lưu data đọc từ file 
-//        this.testset = source2.getDataSet();     //đọc dataset vào bộ nhớ và lưu vào biến
-//        if (m_otps != null){
-//            this.model_options = Utils.splitOptions(m_otps);      
-//        }
-//        if (d_opts != null){
-//            this.data_options = Utils.splitOptions(d_opts);
-//        }
-//    }
+    public MyDecisionTreeModel(String filename1, String filename2, String m_otps, String d_opts ) throws Exception {
+        this.source1 = new DataSource(filename1);     //lưu data đọc từ file 
+        this.trainset = source1.getDataSet();     //đọc dataset vào bộ nhớ và lưu vào biến
+        this.source2 = new DataSource(filename2);     //lưu data đọc từ file 
+        this.testset = source2.getDataSet();     //đọc dataset vào bộ nhớ và lưu vào biến
+        if (m_otps != null){
+            this.model_options = Utils.splitOptions(m_otps);      
+        }
+        if (d_opts != null){
+            this.data_options = Utils.splitOptions(d_opts);
+        }
+    }
 
     public MyDecisionTreeModel(DataSource source1, DataSource source2) {
         this.source1 = source1;
         this.source2 = source2;
     }
     
+    
+//    Sử dụng khi chỉ nhập 1 tập dữ liệu
     public  void buildDecisionTree() throws Exception{
         //Tao tap du lieu train test
         this.trainset = divideTrainTestR(this.dataset, 80, false);
@@ -48,6 +50,43 @@ public class MyDecisionTreeModel extends MyKnowledgeModel{
         System.out.println("so luong thuoc tinh " + (this.trainset.numAttributes()-1));
         this.trainset.setClassIndex(this.trainset.numAttributes()-1);
         this.testset.setClassIndex(this.testset.numAttributes()-1);
+        
+        //Thiết lâp thông số cho mô hình cây quyết định
+        tree = new J48();
+        tree.setOptions(this.model_options);
+       
+        
+        //Huấn luyện mô hình với tập dữ liệu train 
+        tree.buildClassifier(this.trainset);
+    }
+    
+    public  void buildDecisionTree1() throws Exception{
+        //Tao tap du lieu train test
+        this.trainset = this.dataset;
+        this.testset = divideTrainTestRM(this.dataset);
+        
+//        System.out.println("so luong thuoc tinh " + (this.trainset.numAttributes()-1));
+        this.trainset.setClassIndex(this.trainset.numAttributes()-1);
+        this.testset.setClassIndex(this.testset.numAttributes()-1);
+        
+        //Thiết lâp thông số cho mô hình cây quyết định
+        tree = new J48();
+        tree.setOptions(this.model_options);
+       
+        
+        //Huấn luyện mô hình với tập dữ liệu train 
+        tree.buildClassifier(this.trainset);
+    }
+    
+    
+    //    Sử dụng khi chỉ nhập 2 tập dữ liệu
+    public  void buildDecisionTree2() throws Exception{
+        //Tao tap du lieu train test
+//        this.trainset = divideTrainTestR(this.dataset, 80, false);
+//        this.testset = divideTrainTestR(this.dataset, 80, true);
+        System.out.println("so luong thuoc tinh " + (this.trainset.numAttributes()-1));
+        this.trainset.setClassIndex(this.trainset.numAttributes()-1);
+//        this.testset.setClassIndex(this.testset.numAttributes()-1);
         
         //Thiết lâp thông số cho mô hình cây quyết định
         tree = new J48();

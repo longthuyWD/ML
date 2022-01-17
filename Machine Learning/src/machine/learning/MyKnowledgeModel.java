@@ -6,6 +6,7 @@ package machine.learning;
 
 import java.io.File;
 import java.io.IOException;
+import static java.util.EnumSet.range;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,7 +19,9 @@ import weka.core.converters.CSVLoader;
 import weka.core.converters.CSVSaver;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.filters.Filter;
+import weka.filters.unsupervised.attribute.Remove;
 import weka.filters.unsupervised.instance.RemovePercentage;
+import weka.filters.unsupervised.instance.RemoveRange;
 import weka.filters.unsupervised.instance.Resample;
 
 /**
@@ -97,15 +100,31 @@ public class MyKnowledgeModel {
         return Filter.useFilter(originalSet, rp);
     }
     
+    
+    public Instances divideTrainTestRM(Instances originalSet) throws Exception{
+//        System.out.println(test);
+        while(originalSet.numInstances() > 2){
+//            System.out.println(test);
+            RemoveRange remove = new RemoveRange();
+            remove.setInstancesIndices("first");
+            remove.setInvertSelection(false);
+            remove.setInputFormat(originalSet); //set dữ liệu
+            originalSet = Filter.useFilter(originalSet, remove);
+            
+        }
+        return originalSet;
+    }
+    
+    
+    
     public Instances divideTrainTestR(Instances originalSet,
-            double percent, boolean isTest) throws Exception{
+        double percent, boolean isTest) throws Exception{
         Resample rs = new Resample();
         rs.setNoReplacement(true);      //luôn set là true
         rs.setSampleSizePercent(percent);   //set tỉ lệ train
         rs.setInvertSelection(isTest);  //train hoặc test
         rs.setInputFormat(originalSet); //set dữ liệu 
         return Filter.useFilter(originalSet, rs);   //loại bỏ theo resample để chia train test
-        
     }
     
     public void saveModel(String filename, Object model) throws Exception{

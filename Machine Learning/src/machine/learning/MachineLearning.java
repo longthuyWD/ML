@@ -22,37 +22,46 @@ public class MachineLearning {
 //        System.out.println(model1);
 
 
-//          đổi CSV sang arff
+          //đổi CSV sang arff
 //        MyKnowledgeModel model = new MyKnowledgeModel();
-//        model.CSV2Arff("C:\\Users\\Long Thuy\\Documents\\bongda_test.csv", "C:\\Users\\Long Thuy\\Documents\\bongda_test.arff");
+//        model.CSV2Arff("E:\\ML\\bongda.csv", "E:\\ML\\bongda.arff");
 
 
 
-//        MyKnowledgeModel model = new MyKnowledgeModel("C:\\Users\\Long Thuy\\Downloads\\labor.arff");
-//        model.saveData2CSV("C:\\Users\\Long Thuy\\Downloads\\labor.csv");
-    
+//        Dữ liệu iris 
 //        MyDecisionTreeModel model = new MyDecisionTreeModel("C:\\Users\\Long Thuy\\Downloads\\iris.arff",
 //                                    "-C 0.25 -M 2",null);
+//        model.saveData2CSV("C:\\Users\\Long Thuy\\Downloads\\iris.csv") ; 
 //        model.buildDecisionTree();
 //        System.out.println(model);
 //        model.saveModel("C:\\Users\\Long Thuy\\Downloads\\decisiontree.model", model.tree);
 //        model.tree = (J48) model.loadModel("C:\\Users\\Long Thuy\\Downloads\\decisiontree.model");
 //        model.predictClassLabel(model.testset);
                 
-        MyDecisionTreeModel model = new MyDecisionTreeModel("C:\\Users\\Long Thuy\\Documents\\bongda.arff",
+
+//        Du lieu bong da chung
+        MyDecisionTreeModel model = new MyDecisionTreeModel("E:\\ML\\bongda.arff",
                                     "-C 0.25 -M 2",null);
 
-//        MyDecisionTreeModel model = new MyDecisionTreeModel("C:\\Users\\Long Thuy\\Documents\\bongda.arff","C:\\Users\\Long Thuy\\Documents\\bongda_test.arff",
+
+
+//          Du lieu bong da train va test
+//        MyDecisionTreeModel model = new MyDecisionTreeModel("C:\\Users\\Long Thuy\\Downloads\\iris.arff","C:\\Users\\Long Thuy\\Downloads\\iris_test.arff",
 //                                    "-C 0.25 -M 2",null);
-        model.buildDecisionTree();
+//        model.buildDecisionTree2();
+//
+//
+//
+        model.buildDecisionTree1();
         System.out.println(model);
-        model.saveModel("C:\\Users\\Long Thuy\\Downloads\\decisiontree.model", model.tree);
-        model.tree = (J48) model.loadModel("C:\\Users\\Long Thuy\\Downloads\\decisiontree.model");
+        model.saveModel("E:\\ML\\decisiontree.model", model.tree);
+        model.tree = (J48) model.loadModel("E:\\ML\\decisiontree.model");
 //        System.out.println(model.trainset);
+        System.out.println(model.testset.numInstances());
         
         model.predictClassLabel(model.testset);
-        
-        
+//        
+      
         
         
           
